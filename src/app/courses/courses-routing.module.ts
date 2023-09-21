@@ -15,6 +15,11 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
   },
+  {
+    path: ":courseUrl",
+    component: CourseComponent,
+    resolve: { course: CourseResolver },
+  },
 ];
 
 @NgModule({
