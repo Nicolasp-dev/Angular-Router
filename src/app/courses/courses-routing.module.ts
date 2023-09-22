@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: ":courseUrl",
     component: CourseComponent,
+    children: [
+      { path: "", component: LessonsListComponent },
+      { path: "lessons/:lessonSeqNo", component: LessonDetailComponent },
+    ],
     resolve: { course: CourseResolver },
   },
 ];
