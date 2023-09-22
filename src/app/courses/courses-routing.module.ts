@@ -19,8 +19,16 @@ const routes: Routes = [
     path: ":courseUrl",
     component: CourseComponent,
     children: [
-      { path: "", component: LessonsListComponent },
-      { path: "lessons/:lessonSeqNo", component: LessonDetailComponent },
+      {
+        path: "",
+        component: LessonsListComponent,
+        resolve: { lessons: LessonsResolver },
+      },
+      {
+        path: "lessons/:lessonSeqNo",
+        component: LessonDetailComponent,
+        resolve: { lesson: LessonDetailResolver },
+      },
     ],
     resolve: { course: CourseResolver },
   },
@@ -29,12 +37,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [
-    CourseResolver,
-    LessonsResolver,
-    LessonDetailResolver,
-    AuthGuard,
-    ConfirmExitGuard,
-  ],
+  providers: [CourseResolver, LessonsResolver, AuthGuard, ConfirmExitGuard],
 })
 export class CoursesRoutingModule {}

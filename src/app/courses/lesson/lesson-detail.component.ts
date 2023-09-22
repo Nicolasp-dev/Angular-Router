@@ -18,6 +18,7 @@ export class LessonDetailComponent implements OnInit {
 
   ngOnInit() {
     this.lesson$ = this.route.data.pipe(map((data) => data["lesson"]));
+    this.lesson$.subscribe((val) => console.log(val));
   }
 
   previous(lesson: LessonDetail) {
