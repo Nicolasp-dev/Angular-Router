@@ -17,3 +17,6 @@ export const LessonDetailResolver: ResolveFn<LessonDetail> = (
 
   return inject(CoursesService).loadLessonDetail(courseUrl, lessonSeqNo);
 };
+
+
+
